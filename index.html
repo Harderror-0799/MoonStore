@@ -58,84 +58,18 @@
             <h2 class="section-title">Our Products</h2>
             <p class="section-subtitle">Everything you need, all in one place</p>
             
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Sneakers">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Premium Sneakers</h3>
-                        <p>Latest styles and brands</p>
-                    </div>
-                </div>
+            <div class="categories-filter">
+                <button class="category-btn active" data-category="All Products">All Products</button>
+                <button class="category-btn" data-category="Sneakers">Sneakers</button>
+                <button class="category-btn" data-category="Fashion">Fashion</button>
+                <button class="category-btn" data-category="Weaves">Weaves</button>
+                <button class="category-btn" data-category="Laptops">Laptops</button>
+                <button class="category-btn" data-category="iPhones">iPhones</button>
+                <button class="category-btn" data-category="Accessories">Accessories</button>
+            </div>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500" alt="Fashion">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Fashion & Apparel</h3>
-                        <p>Trendy clothing for everyone</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/weaves.png" alt="Weaves">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Hair Weaves</h3>
-                        <p>Premium quality hair extensions</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500" alt="Laptops">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Laptops</h3>
-                        <p>Latest models and brands</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/iphones.png" alt="iPhones">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>iPhones</h3>
-                        <p>Latest iPhone models</p>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500" alt="Accessories">
-                        <div class="product-overlay">
-                            <button class="btn-view">View Details</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Accessories</h3>
-                        <p>Bags, caps, and more</p>
-                    </div>
-                </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically loaded here by JavaScript -->
             </div>
         </div>
     </section>
