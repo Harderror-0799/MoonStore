@@ -115,7 +115,104 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 68, name: "iPhone 13", category: "iPhones", price: "R17,000", image: "https://images.unsplash.com/photo-1634816677838-b71501962391?w=500", description: "Standard iPhone 13, great value." },
         { id: 69, name: "iPhone 12 Pro Max", category: "iPhones", price: "R18,000", image: "https://images.unsplash.com/photo-1607958599102-f4707418477e?w=500", description: "Still a powerful iPhone with a large screen." },
         { id: 70, name: "iPhone 12", category: "iPhones", price: "R14,000", image: "https://images.unsplash.com/photo-1607958599102-f4707418477e?w=500", description: "Popular iPhone 12, good balance of features and price." },
-        { id: 71, name: "iPhone 11", category: "iPhones", price: "R10,000", image: "https://images.unsplash.com/photo-1580528162442-9f9b2b2b2b2b?w=500", description: "Reliable and affordable iPhone 11." },
+        { id: 71, name: "iPhone 11", category: "iPhones", price: "R10,000", image: "https://images.unsplash.com/photo-1607958599102-f4707418477e?w=500", description: "Still a great phone for the price." },
+    ];
+
+    const productsGrid = document.getElementById("products-grid");
+    const categoryButtons = document.querySelectorAll(".category-btn");
+
+    function renderProducts(products) {
+        productsGrid.innerHTML = ""; // Clear existing products
+        products.forEach(product => {
+            const productCard = document.createElement("div");
+            productCard.className = "product-card";
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-price">${product.price}</p>
+                    <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+    }
+
+    function filterProducts(category) {
+        const filteredProducts = (category === "All Products")
+            ? productsData
+            : productsData.filter(p => p.category === category);
+        renderProducts(filteredProducts);
+    }
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            document.querySelector(".category-btn.active").classList.remove("active");
+            button.classList.add("active");
+            filterProducts(button.dataset.category);
+        });
+    });
+
+    // Initial render to fix the missing products issue
+    if (productsData && productsData.length > 0) {
+        filterProducts("All Products");
+    }
+
+    // Product Modal (for future implementation)
+    const productModal = document.createElement("div");
+    productModal.className = "product-modal";
+    productModal.innerHTML = `
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-product-image" src="" alt="" class="modal-image">
+            <h2 id="modal-product-name"></h2>
+            <p id="modal-product-price" class="modal-price"></p>
+            <p id="modal-product-description" class="modal-description"></p>
+            <button class="btn btn-primary add-to-cart-modal">Add to Cart</button>
+        </div>
+    `;
+    document.body.appendChild(productModal);
+
+    const modalCloseButton = productModal.querySelector(".close-button");
+    const modalImage = document.getElementById("modal-product-image");
+    const modalName = document.getElementById("modal-product-name");
+    const modalPrice = document.getElementById("modal-product-price");
+    const modalDescription = document.getElementById("modal-product-description");
+    const modalAddToCartBtn = productModal.querySelector(".add-to-cart-modal");
+
+    function showProductModal(product) {
+        modalImage.src = product.image;
+        modalName.textContent = product.name;
+        modalPrice.textContent = product.price;
+        modalDescription.textContent = product.description;
+        modalAddToCartBtn.onclick = () => {
+            // Add to cart logic here
+            alert(`${product.name} added to cart!`);
+            productModal.style.display = "none";
+        };
+        productModal.style.display = "flex";
+    }
+
+    modalCloseButton.addEventListener("click", () => {
+        productModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === productModal) {
+            productModal.style.display = "none";
+        }
+    });
+
+    // Contact Form Submission (example)
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Thank you for your message! We will get back to you soon.");
+            contactForm.reset();
+        });
+    }
+});ory: "iPhones", price: "R10,000", image: "https://images.unsplash.com/photo-1580528162442-9f9b2b2b2b2b?w=500", description: "Reliable and affordable iPhone 11." },
         { id: 72, name: "iPhone XR", category: "iPhones", price: "R7,000", image: "https://images.unsplash.com/photo-1580528162442-9f9b2b2b2b2b?w=500", description: "Budget-friendly iPhone XR with a great display." },
         { id: 73, name: "iPhone XS Max", category: "iPhones", price: "R8,000", image: "https://images.unsplash.com/photo-1580528162442-9f9b2b2b2b2b?w=500", description: "Older flagship with OLED display." },
         { id: 74, name: "iPhone 8 Plus", category: "iPhones", price: "R5,000", image: "https://images.unsplash.com/photo-1580528162442-9f9b2b2b2b2b?w=500", description: "Classic iPhone with Touch ID and good camera." },
@@ -243,4 +340,45 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+
+const productsGrid = document.getElementById("products-grid");
+const categoryButtons = document.querySelectorAll(".category-btn");
+
+function renderProducts(products) {
+    productsGrid.innerHTML = ""; // Clear existing products
+    products.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price}</p>
+                <button class="btn btn-primary add-to-cart-btn">Add to Cart</button>
+            </div>
+        `;
+        productsGrid.appendChild(productCard);
+    });
+}
+
+function filterProducts(category) {
+    const filteredProducts = (category === "All Products")
+        ? productsData
+        : productsData.filter(p => p.category === category);
+    renderProducts(filteredProducts);
+}
+
+categoryButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelector(".category-btn.active").classList.remove("active");
+        button.classList.add("active");
+        filterProducts(button.dataset.category);
+    });
+});
+
+// Initial render
+if (productsData && productsData.length > 0) {
+    filterProducts("All Products");
+}
 
